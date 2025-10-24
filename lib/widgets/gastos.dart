@@ -29,10 +29,25 @@ class _GastosState extends State<Gastos> {
     
   ];
 
+  void _agregarGasto(Gasto gasto){
+
+    setState(() {
+      _listaGastos.add(gasto);
+    });
+
+  }
+
+  void _eliminarGasto(Gasto gasto){
+    setState(() {
+      _listaGastos.remove(gasto);
+    });
+  }
+
   void _abrirVentanaNuevoGasto(){
     showModalBottomSheet(
+      isScrollControlled: true,
       context: context, 
-      builder: (ctx)=> VentanaNuevoGasto());
+      builder: (ctx)=> VentanaNuevoGasto(funcionAgregarGasto: _agregarGasto));
   }
 
   @override
@@ -44,7 +59,7 @@ class _GastosState extends State<Gastos> {
           IconButton(onPressed: _abrirVentanaNuevoGasto , icon: Icon(Icons.add_outlined))
         ],
       ),
-      body: GastoLista(listaGastos: _listaGastos),
+      body: GastoLista(listaGastos: _listaGastos, funcionEliminarGasto:_eliminarGasto,),
     );
   }
 }

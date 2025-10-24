@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: false,
         brightness: Brightness.light,
-        colorSchemeSeed: Colors.amber
+        colorSchemeSeed: Colors.pink
       ),
       title: 'App Gastos',
       home: Gastos()
